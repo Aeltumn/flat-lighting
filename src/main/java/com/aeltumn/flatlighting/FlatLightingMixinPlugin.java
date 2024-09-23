@@ -18,7 +18,7 @@ public class FlatLightingMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (Objects.equals(mixinClassName, "com.aeltumn.flatlighting.mixin.SodiumBlockRendererMixin")) {
+        if (Objects.equals(mixinClassName, "com.aeltumn.flatlighting.mixin.SodiumAbstractBlockRenderContextMixin")) {
             return isUsingSodium;
         }
         return true;

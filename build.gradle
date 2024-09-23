@@ -1,5 +1,5 @@
 plugins {
-    id "fabric-loom" version "0.11-SNAPSHOT"
+    id "fabric-loom" version "1.7-SNAPSHOT"
     id 'maven-publish'
 }
 
@@ -28,7 +28,8 @@ dependencies {
 
     // Compatibility with Sodium
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
-    modImplementation "maven.modrinth:sodium:${project.sodium_version}"
+//    modImplementation(files("sodium-fabric-0.6.0-snapshot+mc1.21.1-local.jar"))
+    modImplementation("maven.modrinth:sodium:${project.sodium_version}")
 }
 
 processResources {
@@ -40,7 +41,7 @@ processResources {
     }
 }
 
-def targetJavaVersion = 17
+def targetJavaVersion = 21
 tasks.withType(JavaCompile).configureEach {
     // ensure that the encoding is set to UTF-8, no matter what the system default is
     // this fixes some edge cases with special characters not displaying correctly

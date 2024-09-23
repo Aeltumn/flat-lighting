@@ -8,7 +8,7 @@
   ],
   "client": [
     "BakedQuadMixin",
-    "SodiumBlockRendererMixin"
+    "SodiumAbstractBlockRenderContextMixin"
   ],
   "injectors": {
     "defaultRequire": 1
