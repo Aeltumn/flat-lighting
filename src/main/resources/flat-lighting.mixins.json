@@ -7,8 +7,8 @@
   "mixins": [
   ],
   "client": [
-    "BakedQuadMixin",
-    "SodiumAbstractBlockRenderContextMixin"
+    "DisableQuadShadeMixin",
+    "sodium.SodiumDisableShadeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

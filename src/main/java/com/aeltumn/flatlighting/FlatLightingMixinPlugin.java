@@ -6,7 +6,6 @@ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -18,7 +17,7 @@ public class FlatLightingMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (Objects.equals(mixinClassName, "com.aeltumn.flatlighting.mixin.SodiumAbstractBlockRenderContextMixin")) {
+        if (mixinClassName.startsWith("com.aeltumn.flatlighting.mixin.sodium")) {
             return isUsingSodium;
         }
         return true;
