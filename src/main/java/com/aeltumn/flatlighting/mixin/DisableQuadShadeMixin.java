@@ -1,9 +1,10 @@
 package com.aeltumn.flatlighting.mixin;
 
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 // Run at the highest priority so we go last!
 @Mixin(value = BakedQuad.class, priority = 1000000)
@@ -14,8 +15,8 @@ public class DisableQuadShadeMixin {
      *
      * @author Aeltumn
      */
-    @WrapMethod(method = "isShade")
-    public boolean isShade(Operation<Boolean> original) {
-        return false;
+    @Inject(method = "isShade", at = @At("HEAD"), cancellable = true)
+    public void isShade(CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(false);
     }
 }

@@ -17,13 +17,11 @@
     "flat-lighting.mixins.json"
   ],
   "depends": {
-    "fabric": "*",
-    "fabricloader": ">=0.16.5",
-    "fabric-api": ">=0.102.0",
+    "fabricloader": ">=0.15.11",
     "minecraft": ">=1.21"
   },
   "suggests": {
-    "sodium": ">=0.6.0-beta.2"
+    "sodium": ">=0.6.0-beta.1"
   },
   "breaks": {
     "sodium": "<0.6.0-beta.1"
