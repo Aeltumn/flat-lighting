@@ -15,7 +15,7 @@ public class DisableQuadShadeMixin {
      *
      * @author Aeltumn
      */
-    @Inject(method = "isShade", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "shade", at = @At("HEAD"), cancellable = true)
     public void isShade(CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(false);
     }
