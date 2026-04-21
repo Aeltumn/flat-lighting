@@ -1,20 +1,22 @@
 package com.aeltumn.flatlighting.mixin.sodium;
 
-import net.caffeinemc.mods.sodium.client.render.frapi.mesh.MutableQuadViewImpl;
-import net.caffeinemc.mods.sodium.client.render.frapi.render.AbstractBlockRenderContext;
+import com.aeltumn.flatlighting.FlatLightingConfig;
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import net.caffeinemc.mods.sodium.client.render.model.EncodingFormat;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 
-@Mixin(value = AbstractBlockRenderContext.class, remap = false)
+@Mixin(value = EncodingFormat.class, remap = false)
 public class SodiumDisableShadeMixin {
 
     /**
-     * Overrides calls to hasShade on a block to always return false, disabling shading.
+     * Override calls to extract whether a quad is shaded from the format directly
+     * whenever cardinal lighting is disabled.
      */
-    @Redirect(method = "shadeQuad", at = @At(value = "INVOKE", target = "Lnet/caffeinemc/mods/sodium/client/render/frapi/mesh/MutableQuadViewImpl;hasShade()Z"))
-    private boolean hasShade(MutableQuadViewImpl instance) {
-        return false;
+    @WrapMethod(method = "diffuseShade(I)Z")
+    private static boolean hasShade(int bits, Operation<Boolean> original) {
+        if (!FlatLightingConfig.get().cardinalLighting) return false;
+        return original.call(bits);
     }
 }

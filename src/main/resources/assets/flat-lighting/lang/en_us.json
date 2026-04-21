@@ -1,0 +1,4 @@
+{
+  "flat_lighting.options.cardinal_lighting.name": "Cardinal Lighting",
+  "flat_lighting.options.cardinal_lighting.description": "Enables additional shadows on the sides of blocks which improves depth perception. Disabling this setting will give the game a noticeably flatter appearance."
+}

@@ -8,6 +8,7 @@
   ],
   "client": [
     "DisableQuadShadeMixin",
+    "VideoSettingsScreenMixin",
     "sodium.SodiumDisableShadeMixin"
   ],
   "injectors": {
