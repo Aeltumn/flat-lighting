@@ -13,10 +13,13 @@ import java.util.Set;
  */
 public class FlatLightingMixinPlugin implements IMixinConfigPlugin {
 
-    private boolean isUsingSodium;
+    private boolean isUsingFabricApi, isUsingSodium;
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.startsWith("com.aeltumn.flatlighting.mixin.fabric")) {
+            return isUsingFabricApi;
+        }
         if (mixinClassName.startsWith("com.aeltumn.flatlighting.mixin.sodium")) {
             return isUsingSodium;
         }
@@ -25,6 +28,7 @@ public class FlatLightingMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
+        isUsingFabricApi = FabricLoader.getInstance().isModLoaded("fabric-api");
         isUsingSodium = FabricLoader.getInstance().isModLoaded("sodium");
     }
 

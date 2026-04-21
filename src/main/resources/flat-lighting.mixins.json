@@ -9,6 +9,7 @@
   "client": [
     "DisableQuadShadeMixin",
     "VideoSettingsScreenMixin",
+    "fabric.FabricApiDisableShadeMixin",
     "sodium.SodiumDisableShadeMixin"
   ],
   "injectors": {
