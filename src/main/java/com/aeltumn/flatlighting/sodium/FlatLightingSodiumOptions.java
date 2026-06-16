@@ -26,9 +26,9 @@ public class FlatLightingSodiumOptions implements ConfigEntryPoint {
                                 }, () -> FlatLightingConfig.get().cardinalLighting)
                                 .setDefaultValue(FlatLightingConfig.get().cardinalLighting)
                                 .setApplyHook((state) -> {
-                                    var levelRenderer = Minecraft.getInstance().levelRenderer;
-                                    if (levelRenderer != null) {
-                                        levelRenderer.allChanged();
+                                    var levelExtractor = Minecraft.getInstance().levelExtractor;
+                                    if (levelExtractor != null) {
+                                        levelExtractor.allChanged();
                                     }
                                 })
                         )

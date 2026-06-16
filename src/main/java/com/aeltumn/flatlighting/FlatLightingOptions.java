@@ -14,9 +14,9 @@ public class FlatLightingOptions {
                 config.cardinalLighting = newValue;
                 config.save();
 
-                var levelRenderer = Minecraft.getInstance().levelRenderer;
-                if (levelRenderer != null) {
-                    levelRenderer.allChanged();
+                var levelExtractor = Minecraft.getInstance().levelExtractor;
+                if (levelExtractor != null) {
+                    levelExtractor.allChanged();
                 }
             });
 }
